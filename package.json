@@ -7,6 +7,7 @@
   },
   "author": "Oscar Dominguez (https://twitter.com/oscard0m)",
   "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
