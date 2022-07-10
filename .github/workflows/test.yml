@@ -1,0 +1,24 @@
+"on":
+  - push
+name: Test
+jobs:
+  test:
+    name: "[TEST] Issues"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@eeb10cff27034e7acf239c5d29f62154018672fd # tag=v3
+        with:
+          node-version: 16
+          cache: npm
+      - run: npm ci
+      - run: npm t
+      - name: >-
+          Un-encode {repo} URL parameter when it's set to github.repository
+          (#71)
+        uses: ./
+        with:
+          route: GET /repos/{repository}
+          repository: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
