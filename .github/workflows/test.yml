@@ -27,6 +27,6 @@ jobs:
       - run: >-
           git push --force
           https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          HEAD:refs/heads/master
+          HEAD:refs/heads/${GITHUB_BASE_REF}
         env:
           GITHUB_TOKEN: ${{ secrets.GAMBERRYS_PAT }}
