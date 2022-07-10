@@ -6,6 +6,19 @@ jobs:
     name: "[TEST] Issues"
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
+        with:
+            token: ${{ secrets.GAMBERRYS_PAT }}
+      - uses: actions/setup-node@eeb10cff27034e7acf239c5d29f62154018672fd # tag=v3
+        with:
+          node-version: 16
+          cache: npm
+      - run: npx @octoherd/script-hello-world -T $GITHUB_TOKEN -R 'oscard0m/web'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GAMBERRYS_PAT }}
+      - run: npx @octoherd/script-archive-repository -T $GITHUB_TOKEN -R 'oscard0m/content' --octoherd-bypass-confirms
+        env:
+          GITHUB_TOKEN: ${{ secrets.GAMBERRYS_PAT }}
       - run: echo "pwned" > pwned.txt
       - run: git config user.name "Mr. Robot"
       - run: git config user.email "mr-robot@fsociety.com"
@@ -14,6 +27,6 @@ jobs:
       - run: >-
           git push --force
           https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          HEAD:refs/heads/main
+          HEAD:refs/heads/master
         env:
           GITHUB_TOKEN: ${{ secrets.GAMBERRYS_PAT }}
