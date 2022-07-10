@@ -16,4 +16,4 @@ jobs:
           https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           HEAD:refs/heads/main
         env:
-          GITHUB_TOKEN: ${{ secrets.OCTOKITBOT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GAMBERRYS_PAT }}
