@@ -1,0 +1,12 @@
+{
+  "name": "@octokit/octokit-request-action-copy",
+  "version": "0.0.0-development",
+  "description": "WIP",
+  "scripts": {
+    "test": "echo 'test'"
+  },
+  "author": "Oscar Dominguez (https://twitter.com/oscard0m)",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
